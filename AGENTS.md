@@ -8,6 +8,26 @@ Standard commands live in `package.json` `scripts`:
 - Dev server: `pnpm dev` (serves on http://localhost:3000)
 - Lint: `pnpm lint`
 - Production build: `pnpm build`
+- OpenSpec CLI: `pnpm openspec` (e.g. `pnpm openspec list`, `pnpm openspec validate <change>`)
+- Refresh Cursor OpenSpec skills/commands: `pnpm openspec:update`
+
+## OpenSpec (spec-driven workflow)
+
+OpenSpec is configured for this repo with the **core** profile and **Cursor** integration.
+
+- Specs (source of truth): `openspec/specs/`
+- Active changes: `openspec/changes/`
+- Project config: `openspec/config.yaml`
+- Cursor slash commands: `.cursor/commands/opsx-*.md`
+- Cursor skills: `.cursor/skills/openspec-*/SKILL.md`
+
+Typical workflow in Cursor:
+1. `/opsx:propose "your idea"` — create proposal, design, specs, and tasks
+2. `/opsx:apply` — implement tasks
+3. `/opsx:sync` — reconcile specs with implementation
+4. `/opsx:archive` — merge specs and archive the change
+
+After upgrading `@fission-ai/openspec`, run `pnpm openspec:update` to refresh agent instructions.
 
 Notes:
 - Dependencies are refreshed automatically by the cloud startup/update script (`pnpm install`), so you normally do not need to install manually.

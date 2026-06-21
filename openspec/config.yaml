@@ -1,0 +1,29 @@
+schema: spec-driven
+
+context: |
+  Project: reachng-frontend — static marketing/landing page for ReachNG.
+  Stack: Next.js 13 (App Router), TypeScript, Tailwind CSS, pnpm.
+  Design source: https://www.figma.com/design/YSDQUle3CuJUoSccrKvRD0/ReachNG
+  PRD reference: PRD.md at repo root (homepage section mapping vs Figma).
+  No backend, database, or environment variables required.
+  Package manager: pnpm (do not use npm or yarn).
+  Fonts: Montserrat (600, 700), Poppins (300, 400) via next/font/google.
+  Design tokens live in tailwind.config.ts (primary-default, primary-dark-soft, white-linear, etc.).
+  Components: src/components/ · Pages: src/app/ · Assets: public/images/.
+  Homepage uses scroll-snap with 8 sections and a fixed left navigation.
+
+rules:
+  proposal:
+    - Reference relevant Figma node links for UI-related changes.
+    - Check PRD.md for homepage section status before proposing related work.
+    - Prefer incremental changes aligned with one homepage section at a time.
+  design:
+    - Match existing Tailwind token names; do not introduce ad-hoc hex colors.
+    - Reuse HomePageHeader, Navigation, LogoIcon, and TitleHeaderIcon when possible.
+    - Use next/image for static assets under public/images/.
+  specs:
+    - Use Given/When/Then scenario format.
+    - Reference Figma frames for visual and content requirements.
+  tasks:
+    - Keep implementation scoped to src/ and public/ unless explicitly required.
+    - Run pnpm lint after code changes.
