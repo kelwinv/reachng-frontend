@@ -1,4 +1,3 @@
-import { type } from "os";
 import { TitleHeaderIcon } from "../icon/TitleHeaderIcon";
 
 type HomeNavigationProps = {
@@ -8,7 +7,7 @@ type HomeNavigationProps = {
 function HomePageHeader({ type = 0 }: HomeNavigationProps) {
   return (
     <header className="fixed z-50 flex h-24 w-full max-w-[90vw] gap-2 self-center pt-2">
-      <div className=" m-auto flex h-full w-full max-w-5xl  items-center justify-between sm:items-end">
+      <div className=" m-auto flex size-full max-w-5xl items-center  justify-between sm:items-end">
         <TitleHeaderIcon type={type} />
         <button
           className={`cursor-pointer rounded-md text-white transition ${
