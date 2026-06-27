@@ -4,6 +4,27 @@ import { HomeNavigation } from "@/components/Home/Navigation";
 import { HomeMainSection } from "@/components/Home/MainSection";
 import { UIEvent, useState } from "react";
 import { HomePageHeader } from "@/components/Home/HomePageHeader";
+import { AboutSection } from "@/components/Home/AboutSection";
+import { OngsSection } from "@/components/Home/OngsSection";
+import { SupporterSection } from "@/components/Home/SupporterSection";
+import { RegisterOngSection } from "@/components/Home/RegisterOngSection";
+import { ObjectiveSection } from "@/components/Home/ObjectiveSection";
+import { OngsCausesSection } from "@/components/Home/OngsCausesSection";
+import { ContactSection } from "@/components/Home/ContactSection";
+
+// headerType: 0 = default (pink logo + solid button)
+//             1 = variant2 (white logo + outline button, light bg)
+//             2 = variant3 (white logo + solid button, dark/pink bg)
+const SECTION_CONFIG = [
+  { headerType: 0, navLight: false }, // 01 Hero
+  { headerType: 2, navLight: true }, // 02 Sobre (pink bg)
+  { headerType: 1, navLight: false }, // 03 ONGs
+  { headerType: 1, navLight: false }, // 04 Apoiador
+  { headerType: 2, navLight: true }, // 05 Cadastro ONG (dark)
+  { headerType: 2, navLight: true }, // 06 Objetivo (dark)
+  { headerType: 2, navLight: true }, // 07 Causas (dark)
+  { headerType: 2, navLight: true }, // 08 Contato (dark)
+];
 
 export default function Home() {
   const [accScrollPage, setScrollPage] = useState(0);
@@ -34,7 +55,7 @@ export default function Home() {
     const target = event.target as HTMLDivElement;
     const sections: HTMLElement[] = [];
 
-    [0, 1, 2, 3, 4].forEach((idx) => {
+    Array.from({ length: 8 }, (_, i) => i).forEach((idx) => {
       const accSection = document.getElementById(`section-${idx}`);
       if (!accSection) return;
       sections.push(accSection);
@@ -45,38 +66,24 @@ export default function Home() {
     setScrollPage(closestSectionIdx);
   };
 
+  const { headerType } = SECTION_CONFIG[accScrollPage] ?? SECTION_CONFIG[0];
+
   return (
     <div className="flex h-screen flex-col bg-white-linear">
-      <HomePageHeader type={accScrollPage === 1 ? 1 : 0} />
+      <HomePageHeader type={headerType} />
       <HomeNavigation paginateLength={8} selectedIdx={accScrollPage} />
       <main
-        className="h-full snap-y flex-col overflow-x-hidden overflow-y-scroll"
+        className="h-full snap-y overflow-x-hidden overflow-y-scroll"
         onScroll={handleScroll}
       >
         <HomeMainSection />
-        <section
-          id="section-1"
-          className="h-screen snap-center bg-primary-default pl-[8vw] pt-28"
-        >
-          <h1 className="font-montserrat text-4xl font-bold text-white">
-            Sobre a ReachNG
-          </h1>
-        </section>
-        <section id="section-2" className="h-screen snap-center pl-[8vw] pt-28">
-          <h1 className="font-montserrat text-4xl font-bold text-secondary-default">
-            ONGs que contribuimos
-          </h1>
-        </section>
-        <section id="section-3" className="h-screen snap-center pl-[8vw] pt-28">
-          <h1 className="font-montserrat text-4xl font-bold text-secondary-default">
-            Como posso ser apoiador
-          </h1>
-        </section>
-        <section id="section-4" className="h-screen snap-center pl-[8vw] pt-28">
-          <h1 className="font-montserrat text-4xl font-bold text-secondary-default">
-            Como posso cadastrar minha ONG?
-          </h1>
-        </section>
+        <AboutSection />
+        <OngsSection />
+        <SupporterSection />
+        <RegisterOngSection />
+        <ObjectiveSection />
+        <OngsCausesSection />
+        <ContactSection />
       </main>
     </div>
   );
