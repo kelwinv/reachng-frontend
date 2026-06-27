@@ -7,18 +7,19 @@ function HomeNavigation({
   paginateLength = 8,
   selectedIdx = 0,
 }: HomeNavigationProps) {
-  const afterCssClass = `after:m-auto after:h-40 after:w-px after:rounded  ${
-    selectedIdx === 1 ? "after:bg-white" : "after:bg-primary-default"
+  const lightNav = [1, 4, 5, 6, 7].includes(selectedIdx);
+  const afterCssClass = `after:m-auto after:h-16 after:w-px after:rounded  ${
+    lightNav ? "after:bg-white" : "after:bg-primary-default"
   } after:content-['']`;
 
   return (
     <div
       id="left-scroll-conter"
-      className="fixed left-[4vw] top-1/2 -translate-y-1/2"
+      className="fixed bottom-4 left-1/2 z-40 -translate-x-1/2 md:left-[4vw] md:top-1/2 md:bottom-auto md:-translate-x-0 md:-translate-y-1/2"
     >
       <ul
-        className={`flex flex-col items-center font-poppins font-light ${
-          selectedIdx === 1 ? "text-white" : "text-primary-default"
+        className={`flex flex-row items-center gap-3 rounded-full border border-white/60 bg-white/70 px-4 py-2 font-poppins font-light backdrop-blur md:flex-col md:gap-0 md:border-0 md:bg-transparent md:px-0 md:py-0 ${
+          lightNav ? "text-white" : "text-primary-default"
         }`}
       >
         {[...Array(paginateLength)].map((_, idx) => (
@@ -28,7 +29,7 @@ function HomeNavigation({
           >
             <p
               className={
-                idx === selectedIdx ? "text-3xl font-bold" : "font-light"
+                idx === selectedIdx ? "text-xl font-bold md:text-3xl" : "text-sm font-light md:text-base"
               }
             >
               {idx + 1}

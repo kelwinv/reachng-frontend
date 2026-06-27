@@ -1,6 +1,6 @@
 # AGENTS.md
 
-## Cursor Cloud specific instructions
+## Codex specific instructions
 
 This repo is a single **Next.js 13 (app router) frontend** named `reachng-frontend`. It is a static marketing/landing page (ReachNG) with no backend, database, or environment variables required. Package manager is **pnpm** (see `pnpm-lock.yaml`).
 
@@ -13,15 +13,15 @@ Standard commands live in `package.json` `scripts`:
 
 ## OpenSpec (spec-driven workflow)
 
-OpenSpec is configured for this repo with the **core** profile and **Cursor** integration.
+OpenSpec is configured for this repo with the **core** profile and **Codex** integration.
 
 - Specs (source of truth): `openspec/specs/`
 - Active changes: `openspec/changes/`
 - Project config: `openspec/config.yaml`
-- Cursor slash commands: `.cursor/commands/opsx-*.md`
-- Cursor skills: `.cursor/skills/openspec-*/SKILL.md`
+- Codex slash commands: `.codex/commands/opsx-*.md`
+- Codex skills: `.codex/skills/openspec-*/SKILL.md`
 
-Typical workflow in Cursor:
+Typical workflow in Codex:
 1. `/opsx:propose "your idea"` — create proposal, design, specs, and tasks
 2. `/opsx:apply` — implement tasks
 3. `/opsx:sync` — reconcile specs with implementation
